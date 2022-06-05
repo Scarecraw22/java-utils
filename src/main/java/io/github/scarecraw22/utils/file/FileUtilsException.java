@@ -1,4 +1,4 @@
-package io.github.scarecraw22.file;
+package io.github.scarecraw22.utils.file;
 
 public class FileUtilsException extends RuntimeException {
 

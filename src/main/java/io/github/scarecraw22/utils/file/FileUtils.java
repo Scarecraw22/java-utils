@@ -1,6 +1,6 @@
-package io.github.scarecraw22.file;
+package io.github.scarecraw22.utils.file;
 
-import io.github.scarecraw22.string.StringConsts;
+import io.github.scarecraw22.utils.string.StringConsts;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;

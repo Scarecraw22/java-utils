@@ -1,4 +1,4 @@
-package io.github.scarecraw22.string;
+package io.github.scarecraw22.utils.string;
 
 import lombok.experimental.UtilityClass;
 
