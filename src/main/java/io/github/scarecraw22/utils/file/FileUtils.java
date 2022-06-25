@@ -5,8 +5,7 @@ import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -134,5 +133,14 @@ public class FileUtils {
 
     public void deleteFile(@NonNull File file) {
         deleteFile(file.toPath());
+    }
+
+    public void writeInputStreamToFile(InputStream inputStream, Path target) {
+        try {
+            Files.copy(inputStream, target, StandardCopyOption.REPLACE_EXISTING);
+
+        } catch (IOException e) {
+            throw new FileUtilsException(e);
+        }
     }
 }
