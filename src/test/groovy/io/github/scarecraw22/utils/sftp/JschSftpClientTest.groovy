@@ -1,8 +1,8 @@
 package io.github.scarecraw22.utils.sftp
 
 import com.jcraft.jsch.JSch
+import io.github.scarecraw22.utils.docker.containers.SftpServerContainer
 import io.github.scarecraw22.utils.file.FileUtils
-import org.testcontainers.containers.GenericContainer
 import spock.lang.Specification
 
 import java.nio.file.Path
@@ -17,28 +17,27 @@ class JschSftpClientTest extends Specification {
             "USER_NAME"      : "test",
             "USER_PASSWORD"  : "test",
     ]
-    private static GenericContainer CONTAINER = new GenericContainer("lscr.io/linuxserver/openssh-server:latest")
-            .withEnv(ENVS)
-            .withExposedPorts(2222)
+
+    private static final SftpServerContainer SFTP_CONTAINER = new SftpServerContainer(ENVS, 2222)
 
     private SftpConfig sftpConfig = Mock()
 
     def setupSpec() {
-        CONTAINER.start()
+        SFTP_CONTAINER.startWithStopOnShutdown()
     }
 
     def cleanupSpec() {
-        CONTAINER.stop()
+        SFTP_CONTAINER.stop()
     }
 
     def setup() {
         Properties properties = new Properties();
         properties.put("StrictHostKeyChecking", "no")
         sftpConfig.getSshProperties() >> properties
-        sftpConfig.getHost() >> CONTAINER.getHost()
-        sftpConfig.getPort() >> CONTAINER.getFirstMappedPort()
-        sftpConfig.getUsername() >> "test"
-        sftpConfig.getPassword() >> "test"
+        sftpConfig.getHost() >> SFTP_CONTAINER.getContainerHostAddress()
+        sftpConfig.getPort() >> SFTP_CONTAINER.getFirstMappedPort()
+        sftpConfig.getUsername() >> SFTP_CONTAINER.getUsername()
+        sftpConfig.getPassword() >> SFTP_CONTAINER.getPassword()
     }
 
     def "JschSftpClient flow test"() {

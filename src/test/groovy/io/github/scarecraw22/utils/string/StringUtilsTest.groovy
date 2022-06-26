@@ -25,15 +25,27 @@ class StringUtilsTest extends Specification {
         StringUtils.getFirstNChars(input, n)
 
         then:
-        thrown(StringUtilsException.class)
+        thrown(IllegalArgumentException.class)
 
         where:
         input             | n
-        null              | 1
         ""                | 0
         "string"          | 0
         "string"          | -1
         "too long string" | 20
+    }
+
+    @Unroll
+    def 'getFirstNChars("#input", "#n") should return throw NPE'() {
+        when:
+        StringUtils.getFirstNChars(input, n)
+
+        then:
+        thrown(NullPointerException.class)
+
+        where:
+        input | n
+        null  | 1
     }
 
     @Unroll
@@ -56,15 +68,27 @@ class StringUtilsTest extends Specification {
         StringUtils.getLastNChars(input, n)
 
         then:
-        thrown(StringUtilsException.class)
+        thrown(IllegalArgumentException.class)
 
         where:
         input             | n
-        null              | 1
         ""                | 0
         "string"          | 0
         "string"          | -1
         "too long string" | 20
+    }
+
+    @Unroll
+    def 'getLastNChars("#input", "#n") should return throw NPE'() {
+        when:
+        StringUtils.getLastNChars(input, n)
+
+        then:
+        thrown(NullPointerException.class)
+
+        where:
+        input | n
+        null  | 1
     }
 
     @Unroll
@@ -86,12 +110,24 @@ class StringUtilsTest extends Specification {
         StringUtils.getFirstChar(input)
 
         then:
-        thrown(StringUtilsException.class)
+        thrown(IllegalArgumentException.class)
 
         where:
-        input             || _
-        null              || _
-        ""                || _
+        input || _
+        ""    || _
+    }
+
+    @Unroll
+    def 'getFirstChar("#input") should return throw NPE'() {
+        when:
+        StringUtils.getFirstChar(input)
+
+        then:
+        thrown(NullPointerException.class)
+
+        where:
+        input || _
+        null  || _
     }
 
     @Unroll
@@ -113,11 +149,23 @@ class StringUtilsTest extends Specification {
         StringUtils.getLastChar(input)
 
         then:
-        thrown(StringUtilsException.class)
+        thrown(IllegalArgumentException.class)
 
         where:
-        input             | n
-        null              | 1
-        ""                | 0
+        input | n
+        ""    | 0
+    }
+
+    @Unroll
+    def 'getLastNChars("#input") should return throw NPE'() {
+        when:
+        StringUtils.getLastChar(input)
+
+        then:
+        thrown(NullPointerException.class)
+
+        where:
+        input | n
+        null  | 1
     }
 }

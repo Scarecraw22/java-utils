@@ -39,6 +39,8 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <lombok.version>1.18.22</lombok.version>
         <guava.version>31.0.1-jre</guava.version>
         <slf4j.version>1.7.36</slf4j.version>
@@ -50,7 +52,7 @@
         <jsch.version>0.1.55</jsch.version>
         <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
         <testcontainers.version>1.17.2</testcontainers.version>
-
+        <postgresql.driver.version>42.4.0</postgresql.driver.version>
 
         <!-- Plugins -->
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
@@ -138,11 +140,34 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Testcointainers -->
+        <!-- Testcontainers -->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
             <version>${testcontainers.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${testcontainers.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mongodb</artifactId>
+            <version>${testcontainers.version}</version>
+        </dependency>
+
+        <!-- Drivers -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.driver.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>4.2.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -217,15 +242,8 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>execute</goal>
-                            <goal>addSources</goal>
                             <goal>addTestSources</goal>
-                            <goal>generateStubs</goal>
-                            <goal>compile</goal>
-                            <goal>generateTestStubs</goal>
                             <goal>compileTests</goal>
-                            <goal>removeStubs</goal>
-                            <goal>removeTestStubs</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -239,6 +257,18 @@
                         <type>pom</type>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <configuration>
+                    <useFile>false</useFile>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*Spec.java</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

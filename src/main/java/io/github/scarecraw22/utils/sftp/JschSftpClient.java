@@ -1,6 +1,9 @@
 package io.github.scarecraw22.utils.sftp;
 
-import com.jcraft.jsch.*;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
 import io.github.scarecraw22.utils.file.FileUtils;
 import io.github.scarecraw22.utils.file.FileUtilsException;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +14,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Properties;
 import java.util.function.Consumer;
 
 @Slf4j
