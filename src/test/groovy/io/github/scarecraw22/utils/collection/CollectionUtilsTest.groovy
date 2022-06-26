@@ -64,9 +64,9 @@ class CollectionUtilsTest extends Specification {
         thrown(IllegalArgumentException.class)
 
         where:
-        input     | size
-        null      | -1
-        null      | -2
+        input | size
+        null  | -1
+        null  | -2
     }
 
     def 'applyForEach() should apply forEach loop when collection is not empty'() {
