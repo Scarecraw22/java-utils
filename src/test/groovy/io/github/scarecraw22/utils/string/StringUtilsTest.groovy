@@ -8,7 +8,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getFirstNChars("#input", "#n") should return "#expected"'() {
         when:
-        def result = StringUtils.getFirstNChars(input, n)
+        def result = StringUtils.of(input).getFirstNChars(n)
 
         then:
         result == expected
@@ -22,7 +22,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getFirstNChars("#input", "#n") should return throw exception'() {
         when:
-        StringUtils.getFirstNChars(input, n)
+        StringUtils.of(input).getFirstNChars(n)
 
         then:
         thrown(IllegalArgumentException.class)
@@ -38,7 +38,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getFirstNChars("#input", "#n") should return throw NPE'() {
         when:
-        StringUtils.getFirstNChars(input, n)
+        StringUtils.of(input).getFirstNChars(n)
 
         then:
         thrown(NullPointerException.class)
@@ -51,7 +51,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getLastNChars("#input", "#n") should return "#expected"'() {
         when:
-        def result = StringUtils.getLastNChars(input, n)
+        def result = StringUtils.of(input).getLastNChars(n)
 
         then:
         result == expected
@@ -65,7 +65,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getLastNChars("#input", "#n") should return throw exception'() {
         when:
-        StringUtils.getLastNChars(input, n)
+        StringUtils.of(input).getLastNChars(n)
 
         then:
         thrown(IllegalArgumentException.class)
@@ -81,7 +81,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getLastNChars("#input", "#n") should return throw NPE'() {
         when:
-        StringUtils.getLastNChars(input, n)
+        StringUtils.of(input).getLastNChars(n)
 
         then:
         thrown(NullPointerException.class)
@@ -94,7 +94,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getFirstChar("#input") should return "#expected"'() {
         when:
-        def result = StringUtils.getFirstChar(input)
+        def result = StringUtils.of(input).getFirstChar()
 
         then:
         result == expected
@@ -107,7 +107,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getFirstChar("#input") should return throw exception'() {
         when:
-        StringUtils.getFirstChar(input)
+        StringUtils.of(input).getFirstChar()
 
         then:
         thrown(IllegalArgumentException.class)
@@ -120,7 +120,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getFirstChar("#input") should return throw NPE'() {
         when:
-        StringUtils.getFirstChar(input)
+        StringUtils.of(input).getFirstChar()
 
         then:
         thrown(NullPointerException.class)
@@ -133,7 +133,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getLastChar("#input") should return "#expected"'() {
         when:
-        def result = StringUtils.getLastChar(input)
+        def result = StringUtils.of(input).getLastChar()
 
         then:
         result == expected
@@ -146,7 +146,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getLastNChars("#input") should return throw exception'() {
         when:
-        StringUtils.getLastChar(input)
+        StringUtils.of(input).getLastChar()
 
         then:
         thrown(IllegalArgumentException.class)
@@ -159,7 +159,7 @@ class StringUtilsTest extends Specification {
     @Unroll
     def 'getLastNChars("#input") should return throw NPE'() {
         when:
-        StringUtils.getLastChar(input)
+        StringUtils.of(input).getLastChar()
 
         then:
         thrown(NullPointerException.class)

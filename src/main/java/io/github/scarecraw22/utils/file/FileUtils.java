@@ -137,7 +137,7 @@ public class FileUtils {
         deleteFile(file.toPath());
     }
 
-    public void writeInputStreamToFile(InputStream inputStream, Path target) {
+    public void writeInputStreamToFile(@NonNull InputStream inputStream, @NonNull Path target) {
         try {
             Files.copy(inputStream, target, StandardCopyOption.REPLACE_EXISTING);
 
