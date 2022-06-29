@@ -10,7 +10,6 @@ public class RedisContainer extends BaseContainer {
 
     private static final int DEFAULT_PORT = 6379;
 
-
     public RedisContainer(Path redisConfig) {
         this(redisConfig, DEFAULT_PORT);
     }

@@ -4,7 +4,6 @@ import org.testcontainers.containers.PostgreSQLContainer;
 
 public class PostgresqlContainer extends BaseContainer {
 
-
     public PostgresqlContainer(String databaseName, String username, String password) {
         super(new PostgreSQLContainer("postgres:14.4-alpine")
                         .withDatabaseName(databaseName)
