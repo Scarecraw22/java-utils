@@ -34,14 +34,6 @@ public class FileUtils {
         }
     }
 
-    public Path getFile(@NonNull String pathString) {
-        try {
-            return Paths.get(pathString);
-        } catch (Exception e) {
-            throw new FileUtilsException(e);
-        }
-    }
-
     public String readFileFromResourcesToString(@NonNull String pathString) {
         return readFileToString(getFileFromResources(pathString));
     }
