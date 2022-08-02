@@ -34,6 +34,14 @@ public class FileUtils {
         }
     }
 
+    public Path getFile(@NonNull String pathString) {
+        try {
+            return Paths.get(pathString);
+        } catch (Exception e) {
+            throw new FileUtilsException(e);
+        }
+    }
+
     public String readFileFromResourcesToString(@NonNull String pathString) {
         return readFileToString(getFileFromResources(pathString));
     }
@@ -141,6 +149,14 @@ public class FileUtils {
         try {
             Files.copy(inputStream, target, StandardCopyOption.REPLACE_EXISTING);
 
+        } catch (IOException e) {
+            throw new FileUtilsException(e);
+        }
+    }
+
+    public void writeBytesToFile(Path destination, byte[] bytesToWrite) {
+        try {
+            Files.write(destination, bytesToWrite);
         } catch (IOException e) {
             throw new FileUtilsException(e);
         }

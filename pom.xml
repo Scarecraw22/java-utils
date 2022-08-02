@@ -43,12 +43,12 @@
 
         <lombok.version>1.18.24</lombok.version>
         <slf4j.version>1.7.36</slf4j.version>
-        <junit.version>5.9.0-M1</junit.version>
-        <groovy.version>3.0.11</groovy.version>
+        <junit.version>5.9.0</junit.version>
+        <groovy.version>3.0.12</groovy.version>
         <gmavenplus.version>1.13.1</gmavenplus.version>
         <spock.version>2.2-M1-groovy-3.0</spock.version>
         <jsch.version>0.1.55</jsch.version>
-        <testcontainers.version>1.17.2</testcontainers.version>
+        <testcontainers.version>1.17.3</testcontainers.version>
         <postgresql.driver.version>42.4.0</postgresql.driver.version>
         <jedis.version>4.2.3</jedis.version>
 
