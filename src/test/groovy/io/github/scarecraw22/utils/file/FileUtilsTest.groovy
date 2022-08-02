@@ -120,4 +120,19 @@ class FileUtilsTest extends Specification {
         then:
         FileUtils.toBytes(src).encodeHex().toString().toUpperCase() == "546869732069732073616D706C652066696C65203A29"
     }
+
+    def 'writeBytesToFile() should write bytes to other file'() {
+        given:
+        Path destinationFile = FileUtils.createTmpFile("dummy", ".txt")
+        byte[] bytes = FileUtils.toBytes(FileUtils.getFileFromResources("sample_file.txt"))
+
+        when:
+        FileUtils.writeBytesToFile(destinationFile, bytes)
+
+        then:
+        FileUtils.readFileToString(destinationFile) == "This is sample file :)"
+
+        cleanup:
+        FileUtils.deleteFile(destinationFile)
+    }
 }

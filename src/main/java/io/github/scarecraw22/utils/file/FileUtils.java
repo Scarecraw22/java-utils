@@ -145,4 +145,12 @@ public class FileUtils {
             throw new FileUtilsException(e);
         }
     }
+
+    public void writeBytesToFile(Path destination, byte[] bytesToWrite) {
+        try {
+            Files.write(destination, bytesToWrite);
+        } catch (IOException e) {
+            throw new FileUtilsException(e);
+        }
+    }
 }
