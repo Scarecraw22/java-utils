@@ -135,4 +135,18 @@ class FileUtilsTest extends Specification {
         cleanup:
         FileUtils.deleteFile(destinationFile)
     }
+
+    def 'createFileInDir() should create file in properDir'() {
+        given:
+        Path dir = FileUtils.getTmpDir()
+        byte[] bytes = FileUtils.toBytes(FileUtils.getFileFromResources("sample_file.txt"))
+
+        when:
+        FileUtils.createFileInDir(dir, "sample_file.txt", bytes)
+
+        then:
+        Path file = dir.resolve("sample_file.txt")
+        Files.exists(file)
+        FileUtils.readFileToString(file) == "This is sample file :)"
+    }
 }

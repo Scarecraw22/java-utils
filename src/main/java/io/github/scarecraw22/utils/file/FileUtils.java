@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -152,5 +153,18 @@ public class FileUtils {
         } catch (IOException e) {
             throw new FileUtilsException(e);
         }
+    }
+
+    public void createFileInDir(Path dir, String filename, byte[] fileContent) {
+        try {
+            Path destinationFile = dir.resolve(filename);
+            writeBytesToFile(destinationFile, fileContent);
+        } catch (Exception e) {
+            throw new FileUtilsException(e);
+        }
+    }
+
+    public void createFileInDir(Path dir, String filename, String fileContent) {
+        createFileInDir(dir, filename, fileContent.getBytes(StandardCharsets.UTF_8));
     }
 }
