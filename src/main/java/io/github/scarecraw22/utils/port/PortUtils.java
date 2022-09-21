@@ -11,8 +11,7 @@ import java.net.ServerSocket;
 public class PortUtils {
 
     public int getFreePort() {
-        try {
-            ServerSocket serverSocket = new ServerSocket(0);
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
             return serverSocket.getLocalPort();
         } catch (IOException e) {
             throw new IllegalStateException("Couldn't find any free port", e);
