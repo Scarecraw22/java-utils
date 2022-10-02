@@ -12,6 +12,15 @@ public class PostgresqlContainer extends BaseContainer {
                 "Postgresql");
     }
 
+    public PostgresqlContainer(String databaseName, String username, String password, String initScriptPath) {
+        super(new PostgreSQLContainer("postgres:14.4-alpine")
+                        .withDatabaseName(databaseName)
+                        .withUsername(username)
+                        .withPassword(password)
+                        .withInitScript(initScriptPath),
+                "Postgresql");
+    }
+
     public String getJdbcUrl() {
         return getPostgresqlContainer().getJdbcUrl();
     }
