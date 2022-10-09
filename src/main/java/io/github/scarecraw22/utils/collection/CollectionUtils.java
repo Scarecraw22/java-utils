@@ -1,14 +1,14 @@
 package io.github.scarecraw22.utils.collection;
 
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-@Slf4j
+@Log4j2
 @UtilityClass
 public class CollectionUtils {
 

@@ -1,12 +1,12 @@
 package io.github.scarecraw22.utils.port;
 
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 
-@Slf4j
+@Log4j2
 @UtilityClass
 public class PortUtils {
 

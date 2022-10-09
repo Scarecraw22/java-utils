@@ -41,13 +41,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <lombok.version>1.18.24</lombok.version>
-        <slf4j.version>2.0.1</slf4j.version>
-        <junit.version>5.9.0</junit.version>
+        <log4j.version>2.19.0</log4j.version>
+        <junit.version>5.9.1</junit.version>
         <groovy.version>3.0.13</groovy.version>
         <gmavenplus.version>1.13.1</gmavenplus.version>
-        <spock.version>2.2-groovy-3.0</spock.version>
+        <spock.version>2.3-groovy-3.0</spock.version>
         <jsch.version>0.1.55</jsch.version>
-        <testcontainers.version>1.17.3</testcontainers.version>
+        <testcontainers.version>1.17.5</testcontainers.version>
         <postgresql.driver.version>42.5.0</postgresql.driver.version>
         <jedis.version>4.2.3</jedis.version>
 
@@ -76,22 +76,22 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>test</scope>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.19.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
             <version>${jsch.version}</version>
         </dependency>
-
         <!--    JUnit    -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

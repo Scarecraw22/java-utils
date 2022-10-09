@@ -1,9 +1,9 @@
 package io.github.scarecraw22.utils.docker.containers;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.testcontainers.containers.GenericContainer;
 
-@Slf4j
+@Log4j2
 public class BaseContainer {
 
     protected final GenericContainer container;
