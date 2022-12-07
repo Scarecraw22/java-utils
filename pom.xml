@@ -43,13 +43,14 @@
         <lombok.version>1.18.24</lombok.version>
         <log4j.version>2.19.0</log4j.version>
         <junit.version>5.9.1</junit.version>
-        <groovy.version>3.0.13</groovy.version>
-        <gmavenplus.version>1.13.1</gmavenplus.version>
-        <spock.version>2.3-groovy-3.0</spock.version>
+        <groovy.version>4.0.6</groovy.version>
+        <gmavenplus.version>2.1.0</gmavenplus.version>
+        <spock.version>2.4-M1-groovy-4.0</spock.version>
         <jsch.version>0.1.55</jsch.version>
-        <testcontainers.version>1.17.5</testcontainers.version>
-        <postgresql.driver.version>42.5.0</postgresql.driver.version>
-        <jedis.version>4.2.3</jedis.version>
+        <testcontainers.version>1.17.6</testcontainers.version>
+        <postgresql.driver.version>42.5.1</postgresql.driver.version>
+        <jedis.version>4.3.1</jedis.version>
+        <spring.boot.version>3.0.0</spring.boot.version>
 
         <!-- Plugins -->
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
@@ -91,6 +92,7 @@
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
             <version>${jsch.version}</version>
+            <scope>provided</scope>
         </dependency>
         <!--    JUnit    -->
         <dependency>
@@ -112,13 +114,26 @@
             <scope>test</scope>
         </dependency>
 
+        <!--    Spring    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Groovy and Spock -->
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
+            <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>${groovy.version}</version>
+            <version>4.0.6</version>
             <type>pom</type>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
@@ -132,16 +147,19 @@
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
             <version>${testcontainers.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>postgresql</artifactId>
             <version>${testcontainers.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>mongodb</artifactId>
             <version>${testcontainers.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Drivers -->
@@ -244,7 +262,7 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
+                        <groupId>org.apache.groovy</groupId>
                         <artifactId>groovy-all</artifactId>
                         <version>${groovy.version}</version>
                         <scope>runtime</scope>
