@@ -6,7 +6,7 @@
 
     <groupId>io.github.scarecraw22</groupId>
     <artifactId>docker-utils</artifactId>
-    <version>1.11.0-SNAPSHOT</version>
+    <version>1.11.0</version>
     <packaging>jar</packaging>
 
     <name>Docker utils</name>
