@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.scarecraw22</groupId>
-    <artifactId>java-utils</artifactId>
+    <artifactId>docker-utils</artifactId>
     <version>1.11.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>Java utils</name>
-    <description>Utils for java code</description>
+    <name>Docker utils</name>
+    <description>Utils for Docker</description>
     <url>https://github.com/Scarecraw22/java-utils</url>
 
     <licenses>
@@ -46,7 +46,6 @@
         <groovy.version>4.0.10</groovy.version>
         <gmavenplus.version>2.1.0</gmavenplus.version>
         <spock.version>2.4-M1-groovy-4.0</spock.version>
-        <jsch.version>0.1.55</jsch.version>
         <testcontainers.version>1.17.6</testcontainers.version>
         <postgresql.driver.version>42.5.1</postgresql.driver.version>
         <jedis.version>4.3.1</jedis.version>
@@ -64,6 +63,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.github.scarecraw22</groupId>
+            <artifactId>file-utils</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-maven-plugin</artifactId>
@@ -85,13 +90,8 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.19.0</version>
+            <version>${log4j.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jcraft</groupId>
-            <artifactId>jsch</artifactId>
-            <version>${jsch.version}</version>
         </dependency>
         <!--    JUnit    -->
         <dependency>
@@ -113,23 +113,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!--    Spring    -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
-
         <!-- Groovy and Spock -->
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>4.0.6</version>
+            <version>${groovy.version}</version>
             <type>pom</type>
             <scope>test</scope>
         </dependency>
@@ -279,11 +267,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-        <module>file-utils</module>
-        <module>docker-utils</module>
-        <module>sftp-utils</module>
-    </modules>
 
 </project>
