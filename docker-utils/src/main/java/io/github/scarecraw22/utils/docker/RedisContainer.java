@@ -15,7 +15,7 @@ public class RedisContainer extends BaseContainer {
     }
 
     public RedisContainer(Path redisConfig, int exposedPort) {
-        super(new GenericContainer(DockerImageName.parse("redis:7.0.2-alpine"))
+        super(new GenericContainer(DockerImageName.parse("redis:7.0.10-alpine"))
                 .withCopyFileToContainer(MountableFile.forHostPath(redisConfig), "/usr/local/etc/redis/redis.conf")
                 .withCommand("redis-server", "/usr/local/etc/redis/redis.conf")
                 .withExposedPorts(exposedPort), "redis");

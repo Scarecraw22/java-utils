@@ -5,7 +5,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 public class PostgresqlContainer extends BaseContainer {
 
     public PostgresqlContainer(String databaseName, String username, String password) {
-        super(new PostgreSQLContainer("postgres:14.4-alpine")
+        super(new PostgreSQLContainer("postgres:15.2-alpine")
                         .withDatabaseName(databaseName)
                         .withUsername(username)
                         .withPassword(password),
@@ -13,7 +13,7 @@ public class PostgresqlContainer extends BaseContainer {
     }
 
     public PostgresqlContainer(String databaseName, String username, String password, String initScriptPath) {
-        super(new PostgreSQLContainer("postgres:14.4-alpine")
+        super(new PostgreSQLContainer("postgres:15.2-alpine")
                         .withDatabaseName(databaseName)
                         .withUsername(username)
                         .withPassword(password)
