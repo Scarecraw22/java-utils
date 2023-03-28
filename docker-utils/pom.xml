@@ -6,7 +6,7 @@
 
     <groupId>io.github.scarecraw22</groupId>
     <artifactId>docker-utils</artifactId>
-    <version>1.11.0-SNAPSHOT</version>
+    <version>1.12.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Docker utils</name>
@@ -47,9 +47,8 @@
         <gmavenplus.version>2.1.0</gmavenplus.version>
         <spock.version>2.4-M1-groovy-4.0</spock.version>
         <testcontainers.version>1.17.6</testcontainers.version>
-        <postgresql.driver.version>42.5.1</postgresql.driver.version>
-        <jedis.version>4.3.1</jedis.version>
-        <spring.boot.version>3.0.0</spring.boot.version>
+        <postgresql.driver.version>42.6.0</postgresql.driver.version>
+        <jedis.version>4.3.2</jedis.version>
 
         <!-- Plugins -->
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
