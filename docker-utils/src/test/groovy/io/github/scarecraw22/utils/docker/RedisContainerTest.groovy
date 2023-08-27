@@ -1,13 +1,18 @@
 package io.github.scarecraw22.utils.docker
 
-import io.github.scarecraw22.utils.file.FileUtils
 import redis.clients.jedis.Jedis
 import redis.clients.jedis.JedisClientConfig
 import spock.lang.Specification
 
 class RedisContainerTest extends Specification {
 
-    private static final RedisContainer CONTAINER = new RedisContainer(FileUtils.getFileFromResources("redis/redis.conf"))
+    private static final RedisContainer CONTAINER = new RedisContainer(
+            new RedisContainer.Config(
+                    null,
+                    "redis/redis.conf",
+                    null
+            )
+    )
 
     def setupSpec() {
         CONTAINER.startWithStopOnShutdown()
@@ -20,7 +25,7 @@ class RedisContainerTest extends Specification {
     def "Redis container should run without exception"() {
         given:
         JedisClientConfig jedisClientConfig = Mock()
-        jedisClientConfig.getPassword() >> "sample-password"
+        jedisClientConfig.getCredentialsProvider() >> new TestRedisCredentialsSupplier()
         Jedis jedis = new Jedis(CONTAINER.getContainerHostAddress(), CONTAINER.getFirstMappedPort(), jedisClientConfig)
 
         when:

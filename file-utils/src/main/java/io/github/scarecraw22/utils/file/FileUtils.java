@@ -2,7 +2,7 @@ package io.github.scarecraw22.utils.file;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Optional;
 
-@Log4j2
+@Slf4j
 @UtilityClass
 public class FileUtils {
 
