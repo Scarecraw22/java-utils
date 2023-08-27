@@ -8,7 +8,15 @@ import java.sql.DriverManager
 
 class PostgresqlContainerTest extends Specification {
 
-    private static final PostgresqlContainer CONTAINER = new PostgresqlContainer("test", "username", "password")
+    private static final PostgresqlContainer CONTAINER = new PostgresqlContainer(
+            new PostgresqlContainer.Config(
+                    null,
+                    "test",
+                    "username",
+                    "password",
+                    null
+            )
+    )
 
     def setupSpec() {
         CONTAINER.startWithStopOnShutdown()

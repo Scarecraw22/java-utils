@@ -7,7 +7,7 @@ import com.jcraft.jsch.Session;
 import io.github.scarecraw22.utils.file.FileUtils;
 import io.github.scarecraw22.utils.file.FileUtilsException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.function.Consumer;
 
-@Log4j2
+@Slf4j
 @RequiredArgsConstructor
 public class JschSftpClient implements SftpClient {
 

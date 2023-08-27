@@ -4,21 +4,17 @@ import org.testcontainers.containers.PostgreSQLContainer;
 
 public class PostgresqlContainer extends BaseContainer {
 
-    public PostgresqlContainer(String databaseName, String username, String password) {
-        super(new PostgreSQLContainer("postgres:15.2-alpine")
-                        .withDatabaseName(databaseName)
-                        .withUsername(username)
-                        .withPassword(password),
-                "Postgresql");
-    }
+    private static final String DEFAULT_IMAGE = "postgres:15.2-alpine";
 
-    public PostgresqlContainer(String databaseName, String username, String password, String initScriptPath) {
-        super(new PostgreSQLContainer("postgres:15.2-alpine")
-                        .withDatabaseName(databaseName)
-                        .withUsername(username)
-                        .withPassword(password)
-                        .withInitScript(initScriptPath),
-                "Postgresql");
+    public PostgresqlContainer(Config config) {
+        super(new PostgreSQLContainer(config.image() != null
+                        ? config.image()
+                        : DEFAULT_IMAGE)
+                        .withDatabaseName(config.databaseName())
+                        .withUsername(config.username())
+                        .withPassword(config.password())
+                        .withInitScript(config.initScriptPath()),
+                "Postgres");
     }
 
     public String getJdbcUrl() {
@@ -35,5 +31,12 @@ public class PostgresqlContainer extends BaseContainer {
 
     private PostgreSQLContainer getPostgresqlContainer() {
         return (PostgreSQLContainer) container;
+    }
+
+    public record Config(String image,
+                         String databaseName,
+                         String username,
+                         String password,
+                         String initScriptPath) {
     }
 }
